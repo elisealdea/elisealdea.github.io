@@ -495,6 +495,8 @@
         <div class="photo-gallery" id="gallery-hydraulic">
           <div class="gallery-slides" id="slides-hydraulic">
             <img src="proj1_img3.jpg" alt="Hydraulic arm full assembly on desk" />
+            <img src="crane_iso.png" alt="Hydraulic arm CAD isometric render" />
+            <img src="crane_side.png" alt="Hydraulic arm CAD side view render" />
             <img src="proj1_img6.jpg" alt="Hydraulic arm final iteration" />
             <img src="proj1_img4.jpg" alt="Hydraulic arm on mobile Tonka base" />
             <img src="proj1_img1.jpg" alt="Hydraulic arm mechanism close-up" />
@@ -516,6 +518,8 @@
             <button class="gallery-dot" onclick="galleryGoto('hydraulic', 6)"></button>
             <button class="gallery-dot" onclick="galleryGoto('hydraulic', 7)"></button>
             <button class="gallery-dot" onclick="galleryGoto('hydraulic', 8)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 9)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 10)"></button>
           </div>
         </div>
         <div class="project-body">
@@ -605,6 +609,73 @@
           <p class="project-tag">Manufacturing · Lathe</p>
           <h3 class="project-title">Turned Hardwood Bowl</h3>
           <p class="project-desc">Turned a hardwood bowl on a wood lathe from rough stock. Project required understanding material removal rates, tool angle and geometry, and surface finish progression. Wall thickness was controlled by feel and calipers to achieve uniform thickness throughout.</p>
+        </div>
+      </div>
+
+      <!-- Project 5: Jump Standard Cup Holder -->
+      <div class="project-card">
+        <div class="photo-gallery" id="gallery-cupholder">
+          <div class="gallery-slides" id="slides-cupholder">
+            <img src="cupholder_final.png" alt="Cup holder final CAD design" />
+            <img src="cupholder_proto.png" alt="Cup holder prototype CAD design" />
+          </div>
+          <button class="gallery-btn prev" onclick="galleryMove('cupholder', -1)">&#8249;</button>
+          <button class="gallery-btn next" onclick="galleryMove('cupholder', 1)">&#8250;</button>
+          <div class="gallery-dots" id="dots-cupholder">
+            <button class="gallery-dot active" onclick="galleryGoto('cupholder', 0)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('cupholder', 1)"></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Product Design · 3D Printing</p>
+          <h3 class="project-title">Jump Standard Cup Holder — Original Invention</h3>
+          <p class="project-desc">Identified a real problem in her equestrian sport: no good way to keep a drink level and spill-free on a jump standard while riding. Designed a custom bracket-style cup holder in CAD, iterated from prototype to final design, and 3D printed a working solution. The holder mounts to a standard jump pole and keeps drinks stable even during jumping. More photos coming soon.</p>
+        </div>
+      </div>
+
+      <!-- Project 6: Mini Golf Course -->
+      <div class="project-card">
+        <div class="photo-gallery" id="gallery-minigolf">
+          <div class="gallery-slides" id="slides-minigolf">
+            <img src="minigolf_iso.png" alt="Wild Horses mini golf course isometric view" />
+            <img src="minigolf_top.png" alt="Wild Horses mini golf course top view" />
+          </div>
+          <button class="gallery-btn prev" onclick="galleryMove('minigolf', -1)">&#8249;</button>
+          <button class="gallery-btn next" onclick="galleryMove('minigolf', 1)">&#8250;</button>
+          <div class="gallery-dots" id="dots-minigolf">
+            <button class="gallery-dot active" onclick="galleryGoto('minigolf', 0)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('minigolf', 1)"></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">CAD · Product Design</p>
+          <h3 class="project-title">Wild Horses — Mini Golf Course Design</h3>
+          <p class="project-desc">Designed a full Wild West-themed mini golf course in CAD as part of IHS Engineering. The course features a winding path through themed zones including a saloon, bank, canyon, and barrel obstacle area. Details include a slight slope to curve the ball, a ramp-and-bridge hole-in-one option, a moving horse obstacle, and a rubber mat base textured to resemble sand. Produced a complete engineering drawing to scale.</p>
+        </div>
+      </div>
+
+      <!-- Project 7: CAD Portfolio -->
+      <div class="project-card">
+        <div class="photo-gallery" id="gallery-cube">
+          <div class="gallery-slides" id="slides-cube">
+            <video src="solutioncube.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:contain;background:white;flex-shrink:0;"></video>
+            <img src="stamp.png" alt="Custom AE monogram stamp CAD model" />
+            <img src="cuttingboard_iso.png" alt="Cutting board CAD isometric view" />
+            <img src="cuttingboard_top.png" alt="Cutting board CAD top view" />
+          </div>
+          <button class="gallery-btn prev" onclick="galleryMove('cube', -1)">&#8249;</button>
+          <button class="gallery-btn next" onclick="galleryMove('cube', 1)">&#8250;</button>
+          <div class="gallery-dots" id="dots-cube">
+            <button class="gallery-dot active" onclick="galleryGoto('cube', 0)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('cube', 1)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('cube', 2)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('cube', 3)"></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">CAD · 3D Modeling</p>
+          <h3 class="project-title">CAD Design Portfolio — Solution Cube, Stamp & More</h3>
+          <p class="project-desc">A collection of CAD modeling projects from IHS Engineering. The solution cube is a multi-piece 3D packing puzzle designed and animated as an exploded assembly. Also includes a personalized "AE" monogram stamp and a cutting board — all modeled from scratch to practice solid modeling, constraints, and design for manufacturing.</p>
         </div>
       </div>
 
