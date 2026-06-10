@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elise — Mechanical Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --steel:   #1C2B3A;
+      --iron:    #2E3F50;
+      --fog:     #8A9BAD;
+      --paper:   #F0EDE8;
+      --warm:    #FAF8F5;
+      --spark:   #E8651A;
+      --spark-dim: #c45514;
+      --white:   #FFFFFF;
+      --rule:    #D4CFC9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--warm);
+      color: var(--steel);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--steel);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--fog);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--spark); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 2.5rem 4rem;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-text {}
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--spark);
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      color: var(--steel);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--spark);
+    }
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--iron);
+      max-width: 42ch;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--spark);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--spark-dim); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--steel);
+      border: 1.5px solid var(--rule);
+    }
+    .btn-outline:hover { border-color: var(--steel); transform: translateY(-1px); }
+
+    /* Blueprint SVG panel */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blueprint-wrap {
+      width: 100%;
+      max-width: 460px;
+      aspect-ratio: 1;
+      background: var(--steel);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(28,43,58,0.18);
+    }
+    .blueprint-wrap svg {
+      width: 100%; height: 100%;
+      opacity: 0.85;
+    }
+    .blueprint-label {
+      position: absolute;
+      bottom: 1rem; left: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 2.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1rem;
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--spark);
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--steel);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--warm); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(28,43,58,0.1);
+    }
+    /* featured card uses inline style grid-column: span 2 */
+    .project-thumb {
+      height: 180px;
+      background: var(--steel);
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* featured gallery height set via inline style */
+    .project-thumb svg { opacity: 0.6; }
+    .project-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Photo gallery for project cards */
+    .photo-gallery {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: var(--steel);
+      cursor: pointer;
+    }
+    .gallery-slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.35s ease;
+    }
+    .gallery-slides img {
+      flex-shrink: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(28,43,58,0.6);
+      border: none;
+      color: white;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .gallery-btn:hover { background: var(--spark); }
+    .gallery-btn.prev { left: 0.6rem; }
+    .gallery-btn.next { right: 0.6rem; }
+    .gallery-dots {
+      position: absolute;
+      bottom: 0.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 5px;
+      z-index: 2;
+    }
+    .gallery-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: background 0.2s;
+      border: none;
+      padding: 0;
+    }
+    .gallery-dot.active { background: white; }
+    .project-thumb-label {
+      position: absolute; bottom: 0.8rem; right: 0.8rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+    }
+    .project-body { padding: 1.5rem; }
+    .project-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--spark);
+      margin-bottom: 0.5rem;
+    }
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--steel);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--iron);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .project-links { display: flex; gap: 0.75rem; }
+    .project-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--steel);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--rule);
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .project-link:hover { color: var(--spark); border-color: var(--spark); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--steel); color: var(--paper); }
+    #about .section-title { color: var(--paper); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 1rem;
+      color: rgba(240,237,232,0.8);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .skills-list {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .skill-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(240,237,232,0.2);
+      border-radius: 2px;
+      color: rgba(240,237,232,0.7);
+      letter-spacing: 0.04em;
+    }
+    .about-details {}
+    .detail-block { margin-bottom: 2.5rem; }
+    .detail-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--spark);
+      margin-bottom: 0.6rem;
+    }
+    .detail-value {
+      font-size: 0.95rem;
+      color: rgba(240,237,232,0.85);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--paper); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-intro {
+      font-size: 1rem;
+      color: var(--iron);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .contact-item:hover { border-color: var(--spark); transform: translateX(4px); }
+    .contact-icon {
+      width: 36px; height: 36px;
+      background: var(--steel);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 18px; height: 18px; }
+    .contact-item-text {}
+    .contact-item-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fog);
+    }
+    .contact-item-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--steel);
+    }
+
+    /* Simple contact form side */
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fog);
+    }
+    .form-input, .form-textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--steel);
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 0.7rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--spark); }
+    .form-textarea { min-height: 120px; resize: vertical; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--steel);
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+    .footer-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 1.25rem 3rem; gap: 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card:nth-child(1) { grid-column: span 1; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">elise aldea</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Engineering Student · Issaquah, WA</p>
+    <h1 class="hero-name">Elise<br><em>cuts, turns,</em><br>builds, and cranks.</h1>
+    <p class="hero-bio">
+      I'm a high school engineering student at Issaquah High School with a 3.9 GPA, passionate about product design, CAD, and making things with my hands. Here's a selection of work I'm proud of.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="resume.pdf" class="btn btn-outline" download>Download Resume</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="blueprint-wrap" style="background:none; box-shadow: 0 24px 60px rgba(28,43,58,0.18);">
+      <img src="elise_hero.jpg" alt="Elise working on her hydraulic robotic arm" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Work</span>
+      <h2 class="section-title">Selected Projects</h2>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1 — FEATURED: Hydraulic Arm -->
+      <div class="project-card" style="grid-column: span 2;">
+        <div class="photo-gallery" id="gallery-hydraulic" style="height:300px;">
+          <div class="gallery-slides" id="slides-hydraulic">
+            <img src="proj1_img3.jpg" alt="Hydraulic arm full assembly on desk" />
+            <img src="proj1_img6.jpg" alt="Hydraulic arm final iteration" />
+            <img src="proj1_img4.jpg" alt="Hydraulic arm on mobile Tonka base" />
+            <img src="proj1_img1.jpg" alt="Hydraulic arm mechanism close-up" />
+            <img src="proj1_img7.jpg" alt="Hydraulic arm actuator detail" />
+            <img src="proj1_img2.jpg" alt="Hydraulic arm in progress build" />
+            <img src="proj1_img5.jpg" alt="Hydraulic arm base detail" />
+            <img src="proj1_img8.jpg" alt="Hydraulic arm in classroom" />
+            <img src="proj1_img9.jpg" alt="Gripper end-effector close-up" />
+          </div>
+          <button class="gallery-btn prev" onclick="galleryMove('hydraulic', -1)">&#8249;</button>
+          <button class="gallery-btn next" onclick="galleryMove('hydraulic', 1)">&#8250;</button>
+          <div class="gallery-dots" id="dots-hydraulic">
+            <button class="gallery-dot active" onclick="galleryGoto('hydraulic', 0)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 1)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 2)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 3)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 4)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 5)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 6)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 7)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('hydraulic', 8)"></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Fluid Mechanics · Mechanisms</p>
+          <h3 class="project-title">Hydraulic Robotic Arm — Syringe-Actuated Multi-DOF Manipulator</h3>
+          <p class="project-desc">Designed and built a multi-degree-of-freedom robotic arm powered entirely by hydraulic actuators made from syringes and tubing. The arm is mounted on a wheeled Tonka truck chassis with wooden dowel outriggers for stability. A binder-clip gripper end-effector (fabricated in-class) can pick and place objects. The project explored Pascal's law, fluid power transmission, and mechanical linkage geometry across multiple build iterations.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">Report PDF →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Automata -->
+      <div class="project-card">
+        <div class="photo-gallery" id="gallery-automata">
+          <div class="gallery-slides" id="slides-automata">
+            <video src="automata.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;flex-shrink:0;"></video>
+            <img src="auto_01.jpg" alt="Automata front view" />
+            <img src="auto_02.jpg" alt="Automata side view showing cams" />
+            <img src="auto_03.jpg" alt="Automata in motion" />
+            <img src="auto_04.jpg" alt="Automata top view" />
+          </div>
+          <button class="gallery-btn prev" onclick="galleryMove('automata', -1)">&#8249;</button>
+          <button class="gallery-btn next" onclick="galleryMove('automata', 1)">&#8250;</button>
+          <div class="gallery-dots" id="dots-automata">
+            <button class="gallery-dot active" onclick="galleryGoto('automata', 0)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('automata', 1)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('automata', 2)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('automata', 3)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('automata', 4)"></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Dynamics · Mechanisms</p>
+          <h3 class="project-title">Jungle Automata — Cam-Driven Kinetic Sculpture</h3>
+          <p class="project-desc">Designed and built a hand-cranked automata with a jungle theme. 3D-printed cams and followers inside a painted wooden box animate a swinging monkey and a flapping butterfly, choreographed through cam profile geometry and follower displacement diagrams.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">Report PDF →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Giraffe -->
+      <div class="project-card">
+        <div class="photo-gallery" id="gallery-giraffe">
+          <div class="gallery-slides" id="slides-giraffe">
+            <img src="giraffe_08.jpg" alt="Finished giraffe sculpture, three-quarter view" />
+            <img src="giraffe_07.jpg" alt="Finished giraffe, side view with gloss finish" />
+            <img src="giraffe_05.jpg" alt="Sanded giraffe, side view" />
+            <img src="giraffe_06.jpg" alt="Sanded giraffe, front view" />
+            <img src="giraffe_04.jpg" alt="Scroll-sawn giraffe, early stage" />
+            <img src="giraffe_03.jpg" alt="Scroll-sawn giraffe, profile view" />
+            <img src="giraffe_02.jpg" alt="Rough-cut giraffe block" />
+            <img src="giraffe_01.jpg" alt="Project sheet with giraffe sketches" />
+          </div>
+          <button class="gallery-btn prev" onclick="galleryMove('giraffe', -1)">&#8249;</button>
+          <button class="gallery-btn next" onclick="galleryMove('giraffe', 1)">&#8250;</button>
+          <div class="gallery-dots" id="dots-giraffe">
+            <button class="gallery-dot active" onclick="galleryGoto('giraffe', 0)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('giraffe', 1)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('giraffe', 2)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('giraffe', 3)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('giraffe', 4)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('giraffe', 5)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('giraffe', 6)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('giraffe', 7)"></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Manufacturing · Woodworking</p>
+          <h3 class="project-title">Wood Wildlife Sculpture — Giraffe</h3>
+          <p class="project-desc">Hand-fabricated a 3D giraffe sculpture in hardwood from sketch to finished piece. Used the interlocking two-profile scroll-saw technique to achieve full 3D form from flat stock, finished with progressive sanding and gloss oil.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">Project Write-up →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Turned Bowl -->
+      <div class="project-card">
+        <div class="photo-gallery" id="gallery-bowl">
+          <div class="gallery-slides" id="slides-bowl">
+            <img src="bowl_03.jpg" alt="Turned bowl on lathe, sanding stage" />
+            <img src="bowl_02.jpg" alt="Turned bowl on lathe, face-on view" />
+            <img src="bowl_01.jpg" alt="Turned bowl being checked by hand" />
+          </div>
+          <button class="gallery-btn prev" onclick="galleryMove('bowl', -1)">&#8249;</button>
+          <button class="gallery-btn next" onclick="galleryMove('bowl', 1)">&#8250;</button>
+          <div class="gallery-dots" id="dots-bowl">
+            <button class="gallery-dot active" onclick="galleryGoto('bowl', 0)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('bowl', 1)"></button>
+            <button class="gallery-dot" onclick="galleryGoto('bowl', 2)"></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Manufacturing · Lathe</p>
+          <h3 class="project-title">Turned Hardwood Bowl</h3>
+          <p class="project-desc">Turned a hardwood bowl on a wood lathe from rough stock. Project required understanding material removal rates, tool angle and geometry, and surface finish progression. Wall thickness was controlled by feel and calipers to achieve uniform thickness throughout.</p>
+          <div class="project-links">
+            <a href="#" class="project-link">Project Write-up →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Background</span>
+      <h2 class="section-title">About Elise</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm an engineering student at Issaquah High School with a passion for product design, CAD, and hands-on fabrication. I care about the full arc from sketch to finished object — and the rigour required at every step in between.</p>
+        <p>Outside the workshop I volunteer with the Forgotten Faces Foundation, ride competitively in USEF equestrian events (6th nationally in 2023), and recently spent a day job shadowing engineers at Sonos across mechanical, electrical, and audio disciplines.</p>
+        <div class="skills-list">
+          <span class="skill-tag">CAD / SolidWorks</span>
+          <span class="skill-tag">3D Printing</span>
+          <span class="skill-tag">Laser Cutting</span>
+          <span class="skill-tag">Wood Lathe</span>
+          <span class="skill-tag">Scroll Saw</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Engineering Graphics</span>
+          <span class="skill-tag">Product Design</span>
+          <span class="skill-tag">Microsoft Office</span>
+          <span class="skill-tag">Romanian (Fluent)</span>
+          <span class="skill-tag">Spanish (Beginner)</span>
+        </div>
+      </div>
+      <div class="about-details">
+        <div class="detail-block">
+          <p class="detail-label">Education</p>
+          <p class="detail-value">Issaquah High School, Issaquah WA<br>Expected Graduation: June 2027 · GPA 3.9/4.0<br><br>AP Calculus AB · AP Chemistry · AP Computer Science<br>Introduction to Engineering Design · Material Science</p>
+        </div>
+        <div class="detail-block">
+          <p class="detail-label">Achievements</p>
+          <p class="detail-value">Romanian-American Heritage Award 2024 &amp; 2025<br>National Honor Society · Seal of Biliteracy 2025<br>Pillar Award, Issaquah High School 2024</p>
+        </div>
+        <div class="detail-block">
+          <p class="detail-label">Location</p>
+          <p class="detail-value">Issaquah, WA</p>
+        </div>
+        <a href="resume.pdf" class="btn btn-primary" download style="margin-top:0.5rem;">Download Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">Get in touch</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">I'm currently looking for engineering internship opportunities for Summer 2026 and beyond. Whether you have an opportunity, a question, or just want to connect — reach out, I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="mailto:elisealdea@gmail.com" class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7DB8D8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <p class="contact-item-label">Email</p>
+              <p class="contact-item-value">elisealdea@gmail.com</p>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/elisealdea/" target="_blank" rel="noopener" class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7DB8D8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <p class="contact-item-label">LinkedIn</p>
+              <p class="contact-item-value">linkedin.com/in/elisealdea</p>
+            </div>
+          </a>
+          <a href="https://github.com/elisealdea" target="_blank" rel="noopener" class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7DB8D8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+            </div>
+            <div class="contact-item-text">
+              <p class="contact-item-label">GitHub</p>
+              <p class="contact-item-value">github.com/elisealdea</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-input" type="text" id="name" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" placeholder="What's on your mind?"></textarea>
+          </div>
+          <a href="mailto:elise@example.com" class="btn btn-primary" style="align-self:flex-start;">Send via Email →</a>
+          <p style="font-size:0.75rem;color:var(--fog);margin-top:-0.25rem;">This will open your email client with the message pre-filled.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-text">Elise Aldea · Engineering Student · Issaquah, WA · Built with GitHub Pages</p>
+</footer>
+
+<script>
+  const galleryState = {};
+  function galleryMove(id, dir) {
+    const slides = document.getElementById('slides-' + id);
+    const total = slides.children.length;
+    if (!galleryState[id]) galleryState[id] = 0;
+    galleryState[id] = (galleryState[id] + dir + total) % total;
+    galleryGoto(id, galleryState[id]);
+  }
+  function galleryGoto(id, index) {
+    galleryState[id] = index;
+    const slides = document.getElementById('slides-' + id);
+    slides.style.transform = 'translateX(-' + (index * 100) + '%)';
+    const dots = document.getElementById('dots-' + id).children;
+    for (let i = 0; i < dots.length; i++) dots[i].classList.toggle('active', i === index);
+  }
+</script>
+</body>
+</html>
