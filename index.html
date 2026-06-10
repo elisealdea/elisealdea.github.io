@@ -179,7 +179,7 @@
     #projects { background: var(--warm); }
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
     }
     .project-card {
@@ -211,9 +211,9 @@
     /* Photo gallery for project cards */
     .photo-gallery {
       position: relative;
-      height: 220px;
+      height: 600px;
       overflow: hidden;
-      background: var(--steel);
+      background: var(--white);
       cursor: pointer;
     }
     .gallery-slides {
@@ -226,7 +226,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      background: var(--steel);
+      background: var(--white);
     }
     .gallery-btn {
       position: absolute;
@@ -477,7 +477,7 @@
   </div>
   <div class="hero-visual">
     <div class="blueprint-wrap" style="background:none; box-shadow: 0 24px 60px rgba(28,43,58,0.18);">
-      <img src="elise_hero.jpg" alt="Elise working on her hydraulic robotic arm" style="width:100%;height:100%;object-fit:contain;background:var(--steel);display:block;" />
+      <img src="elise_hero.jpg" alt="Elise working on her hydraulic robotic arm" style="width:100%;height:100%;object-fit:contain;background:white;display:block;" />
     </div>
   </div>
 </section>
@@ -492,8 +492,8 @@
     <div class="projects-grid">
 
       <!-- Project 1 — FEATURED: Hydraulic Arm -->
-      <div class="project-card" style="grid-column: span 2;">
-        <div class="photo-gallery" id="gallery-hydraulic" style="height:300px;">
+      <div class="project-card">
+        <div class="photo-gallery" id="gallery-hydraulic">
           <div class="gallery-slides" id="slides-hydraulic">
             <img src="proj1_img3.jpg" alt="Hydraulic arm full assembly on desk" />
             <img src="proj1_img6.jpg" alt="Hydraulic arm final iteration" />
@@ -523,9 +523,6 @@
           <p class="project-tag">Fluid Mechanics · Mechanisms</p>
           <h3 class="project-title">Hydraulic Robotic Arm — Syringe-Actuated Multi-DOF Manipulator</h3>
           <p class="project-desc">Designed and built a multi-degree-of-freedom robotic arm powered entirely by hydraulic actuators made from syringes and tubing. The arm is mounted on a wheeled Tonka truck chassis with wooden dowel outriggers for stability. A binder-clip gripper end-effector (fabricated in-class) can pick and place objects. The project explored Pascal's law, fluid power transmission, and mechanical linkage geometry across multiple build iterations.</p>
-          <div class="project-links">
-            <a href="#" class="project-link">Report PDF →</a>
-          </div>
         </div>
       </div>
 
@@ -553,9 +550,6 @@
           <p class="project-tag">Dynamics · Mechanisms</p>
           <h3 class="project-title">Jungle Automata — Cam-Driven Kinetic Sculpture</h3>
           <p class="project-desc">Designed and built a hand-cranked automata with a jungle theme. 3D-printed cams and followers inside a painted wooden box animate a swinging monkey and a flapping butterfly, choreographed through cam profile geometry and follower displacement diagrams.</p>
-          <div class="project-links">
-            <a href="#" class="project-link">Report PDF →</a>
-          </div>
         </div>
       </div>
 
@@ -589,9 +583,6 @@
           <p class="project-tag">Manufacturing · Woodworking</p>
           <h3 class="project-title">Wood Wildlife Sculpture — Giraffe</h3>
           <p class="project-desc">Hand-fabricated a 3D giraffe sculpture in hardwood from sketch to finished piece. Used the interlocking two-profile scroll-saw technique to achieve full 3D form from flat stock, finished with progressive sanding and gloss oil.</p>
-          <div class="project-links">
-            <a href="#" class="project-link">Project Write-up →</a>
-          </div>
         </div>
       </div>
 
@@ -615,9 +606,6 @@
           <p class="project-tag">Manufacturing · Lathe</p>
           <h3 class="project-title">Turned Hardwood Bowl</h3>
           <p class="project-desc">Turned a hardwood bowl on a wood lathe from rough stock. Project required understanding material removal rates, tool angle and geometry, and surface finish progression. Wall thickness was controlled by feel and calipers to achieve uniform thickness throughout.</p>
-          <div class="project-links">
-            <a href="#" class="project-link">Project Write-up →</a>
-          </div>
         </div>
       </div>
 
