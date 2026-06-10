@@ -179,7 +179,7 @@
     #projects { background: var(--warm); }
     .projects-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
     .project-card {
@@ -211,7 +211,7 @@
     /* Photo gallery for project cards */
     .photo-gallery {
       position: relative;
-      height: 600px;
+      height: 400px;
       overflow: hidden;
       background: var(--white);
       cursor: pointer;
@@ -441,7 +441,6 @@
       .hero-visual { display: none; }
       section { padding: 4rem 1.25rem; }
       .projects-grid { grid-template-columns: 1fr; }
-      .project-card:nth-child(1) { grid-column: span 1; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     }
 
@@ -521,7 +520,7 @@
         </div>
         <div class="project-body">
           <p class="project-tag">Fluid Mechanics · Mechanisms</p>
-          <h3 class="project-title">Hydraulic Robotic Arm — Syringe-Actuated Multi-DOF Manipulator</h3>
+          <h3 class="project-title">Hydraulic Robotic Arm — Syringe-Powered Manipulator</h3>
           <p class="project-desc">Designed and built a multi-degree-of-freedom robotic arm powered entirely by hydraulic actuators made from syringes and tubing. The arm is mounted on a wheeled Tonka truck chassis with wooden dowel outriggers for stability. A binder-clip gripper end-effector (fabricated in-class) can pick and place objects. The project explored Pascal's law, fluid power transmission, and mechanical linkage geometry across multiple build iterations.</p>
         </div>
       </div>
